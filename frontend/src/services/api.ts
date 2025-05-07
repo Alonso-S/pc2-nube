@@ -6,7 +6,7 @@ import type {
     RegisterFormData,
 } from "../types";
 
-const API_URL = "http://localhost:8000/api";
+const API_URL = "http://pc2.debtcleaner.site/api";
 
 export const registerClient = async (
     data: RegisterFormData,
