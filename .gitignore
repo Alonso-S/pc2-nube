@@ -1,0 +1,33 @@
+# Ignorar node_modules
+node_modules/
+
+# Ignorar los archivos de log
+*.log
+
+# Ignorar archivos de configuración del entorno
+# .env
+
+# Ignorar el directorio de build de React (si lo generas)
+build/
+
+# Ignorar archivos de dependencias de producción en React
+/dist/
+
+# Ignorar archivos de test de Jest (si usas Jest)
+/coverage/
+
+# Ignorar archivos de caché de npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar las carpetas de Docker si las usas
+.docker/
+
+# Ignorar archivos y directorios temporales generados por editor
+.idea/
+.vscode/
+
+# Ignorar archivos de sistema (sólo para macOS y otros sistemas basados en Unix)
+.DS_Store
+Thumbs.db

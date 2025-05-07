@@ -1,0 +1,51 @@
+services:
+  backend:
+    build:
+      context: ./backend # Ruta al directorio del backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql-db
+    #   networks:
+    #     - app_network
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+    restart: on-failure
+
+  # frontend:
+  #   build:
+  #     context: ./frontend # Ruta al directorio del frontend
+  #   ports:
+  #     - "3000:3000" # Asumiendo que tu React app corre en el puerto 3000
+  #   depends_on:
+  #     - backend # Asegura que el backend esté listo antes de iniciar el frontend
+  frontend:
+    build:
+      context: ./frontend # Ruta al directorio del frontend
+    ports:
+      - "4000:4000" # Exponemos el puerto 4000 del contenedor al puerto 4000 del host
+    depends_on:
+      - backend
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: pc2_dsn
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+
+# networks:
+#   app_network:
+#     driver: bridge
+
+volumes:
+  mysql_data:
