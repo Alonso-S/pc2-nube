@@ -8,11 +8,7 @@ dotenv.config();
 const app = express();
 const port = 8000;
 
-app.use(cors({
-    origin: "http://localhost:4000", // Permite peticiones desde el frontend React
-    methods: "GET,POST,PUT,DELETE", // Métodos permitidos
-    allowedHeaders: "Content-Type,Authorization", // Cabeceras permitidas
-}));
+app.use(cors());
 
 // Middleware para parsear JSON
 app.use(express.json());
