@@ -10,17 +10,8 @@ services:
     #     - app_network
     env_file:
       - ./backend/.env
-    volumes:
-      - ./backend:/app
     restart: on-failure
 
-  # frontend:
-  #   build:
-  #     context: ./frontend # Ruta al directorio del frontend
-  #   ports:
-  #     - "3000:3000" # Asumiendo que tu React app corre en el puerto 3000
-  #   depends_on:
-  #     - backend # Asegura que el backend esté listo antes de iniciar el frontend
   frontend:
     build:
       context: ./frontend # Ruta al directorio del frontend
